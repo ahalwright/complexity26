@@ -1,0 +1,31 @@
+# 3_24_23:  4x1: 10 and 12 gates   Figure 2 of UP paper  verified 12_10_24
+
+# julia -L aliases.jl -L CCCG.jl
+using .CGP
+using Plots
+###insertcols!(ddf4,3,:ints12_6lgsrt=>sort(map(x->lg10(x),ddf4.ints12_6),rev=true))
+###Plots.scatter(0:(2^2^4-1),ddf4.ints12_6lgsrt,markerstrokecolor=:orange,markercolor=:orange,labels="12 gates 6 levelsback")
+###Plots.scatter!(0:(2^2^4-1),cdf4.ints10_5lgsrt,markerstrokecolor=:blue,markercolor=:blue,labels="10 gates 5 levelsback")
+###Plots.scatter!(xlabel="rank",ylabel="log redundancy")
+####savefig("../data/9_12_22/log_redund_vs_rank_4x1_10_12gts5lb_8_15_22.png")
+###Plots.scatter!(xlabel="rank",ylabel="log frequency")
+####savefig("../data/9_12_22/log_freq_vs_rank_4x1_10_12gts5lb_8_15_22.png")   # verified 12_10_24
+####savefig("../data/1_25_25/log_freq_vs_rank_4x1_10_12gts5lb_8_15_22.png")   # verified 1_25_25
+###savefig("../data/2_21_26/log_freq_vs_rank_4x1_10_12gts5lb_8_15_22.png")   # verified 2_21_26 4_18_26
+
+
+3_24_23:  4x1: 10 and 12 gates   Figure 2 of UP paper  verified 12_10_24  5_13_26
+cdf4 = read_dataframe("../data/8_15_22/count_outputs_ch_5funcs_4inputs_10gates_5lb_EG.csv");
+insertcols!(cdf4,3,:ints10_5lgsrt=>sort(map(x->lg10(x),cdf4.ints10_5),rev=true));
+ddf4 = read_dataframe("../data/counts/count_outputs_ch_5funcs_4inputs_12gates_6lb_H.csv");   # from data/8_15_22/
+insertcols!(ddf4,3,:ints12_6lgsrt=>sort(map(x->lg10(x),ddf4.ints12_6),rev=true)); 
+Plots.scatter(0:(2^2^4-1),ddf4.ints12_6lgsrt,markerstrokecolor=:orange,markercolor=:orange,labels="12 gates 6 levelsback")
+Plots.scatter!(0:(2^2^4-1),cdf4.ints10_5lgsrt,markerstrokecolor=:blue,markercolor=:blue,labels="10 gates 5 levelsback")
+Plots.scatter!(xlabel="rank",ylabel="log redundancy")
+#savefig("../data/9_12_22/log_redund_vs_rank_4x1_10_12gts5lb_8_15_22.png")
+Plots.scatter!(xlabel="rank",ylabel="log frequency")
+#savefig("../data/9_12_22/log_freq_vs_rank_4x1_10_12gts5lb_8_15_22.png")   # verified 12_10_24
+#savefig("../data/1_25_25/log_freq_vs_rank_4x1_10_12gts5lb_8_15_22.png")   # verified 1_25_25
+savefig("../data/2_21_26/log_freq_vs_rank_4x1_10_12gts5lb_8_15_22.png")   # verified 2_21_26 4_18_26
+
+
